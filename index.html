@@ -23,10 +23,8 @@
     <div class="ico">⚖️</div>
     <div class="ttl">Court Manager</div>
     <div class="sub">Baghpat District Court</div>
-
     <input type="text" id="lid" placeholder="User ID">
     <input type="password" id="lpwd" placeholder="Password">
-
     <button id="lbtn" onclick="doLogin()">🔐 Login</button>
     <div id="lerr"></div>
   </div>
@@ -45,12 +43,12 @@
   </div>
 </div>
 
-<!-- TAB 1 -->
+<!-- TAB 1 — COURT -->
 <div class="tab-c on" id="cfm-tab">
 <div class="cnt">
 
   <div class="sec">
-    <h3>📅 Working Date</h3>
+    <h3>📅 Working Date & Version</h3>
     <input type="date" id="workDate">
     <select id="versionSelect"></select>
   </div>
@@ -69,8 +67,17 @@
   </div>
 
   <div class="sec">
-    <h3>🔍 Search</h3>
+    <h3>🔍 Search & Filter</h3>
     <input type="text" id="searchBox">
+  </div>
+
+  <div class="sec">
+    <h3>✍️ Manual Entry</h3>
+    <input type="text" id="manualCaseInput">
+    <div class="g2">
+      <button class="btn btn-a" onclick="manualAction('SENT')">📤 SENT</button>
+      <button class="btn btn-s" onclick="manualAction('RECEIVED')">📥 RECEIVED</button>
+    </div>
   </div>
 
   <div class="twrap">
@@ -80,11 +87,24 @@
 </div>
 </div>
 
-<!-- TAB 2 -->
+<!-- TAB 2 — BUNDLE -->
 <div class="tab-c" id="bundle-tab">
 <div class="cnt">
   <h3>📁 Bundle Tracker</h3>
+  <div id="bundleContent"></div>
 </div>
+</div>
+
+<!-- FLOAT BUTTONS -->
+<div class="flt">
+  <button class="btn btn-a" onclick="startCFMScan('SENT')">📤 Scan SENT</button>
+  <button class="btn btn-s" onclick="startCFMScan('RECEIVED')">📥 Scan RECEIVED</button>
+</div>
+
+<!-- SCANNER OVERLAY -->
+<div id="scan-ov">
+  <video id="scan-vid"></video>
+  <button onclick="closeScan()">Close</button>
 </div>
 
 <!-- OVERDUE MODAL -->
@@ -98,21 +118,16 @@
 <!-- NEXT DATE MODAL -->
 <div class="modal center" id="ndModal">
   <div class="msh">
-    <div class="mt">📅 Next Date</div>
+    <div class="mt">📅 Next Hearing Date</div>
     <input type="date" id="ndInput">
 
-    <div>
-      <button onclick="toggleJO('J')">Jail</button>
-      <button onclick="toggleJO('O')">Old</button>
+    <div class="jo-row">
+      <button onclick="toggleJO('J')">J - Jail</button>
+      <button onclick="toggleJO('O')">O - Old</button>
     </div>
 
     <button onclick="saveNextDate()">Save</button>
   </div>
-</div>
-
-<!-- SCANNER -->
-<div id="scan-ov">
-  <video id="scan-vid"></video>
 </div>
 
 <!-- JS FILES -->
