@@ -2,6 +2,7 @@
 body{font-family:'Segoe UI',system-ui,sans-serif;background:#f8fafc;color:#1e293b;min-height:100vh;padding-bottom:80px}
 button{cursor:pointer;font-family:inherit}
 
+/* THEME */
 :root{
   --p:#4f46e5;--ph:#4338ca;--bg:#f8fafc;--sur:#fff;
   --txt:#1e293b;--mu:#64748b;--bdr:#e2e8f0;
@@ -19,6 +20,10 @@ button{cursor:pointer;font-family:inherit}
 .tab-btn{flex:1;padding:11px 8px;background:none;border:none;color:#ffffffaa;font-size:14px;font-weight:600;border-bottom:3px solid transparent}
 .tab-btn.on{color:#fff;border-bottom:3px solid #fff;background:#ffffff18}
 
+/* TABS */
+.tab-c{display:none}
+.tab-c.on{display:block}
+
 /* LAYOUT */
 .cnt{padding:14px;max-width:1000px;margin:0 auto}
 .sec{background:var(--sur);padding:18px;margin-bottom:14px;border-radius:var(--rl);box-shadow:var(--ss);border:1px solid var(--bdr)}
@@ -31,7 +36,6 @@ input,select{
   border-radius:var(--rm);border:1.5px solid var(--bdr);
   background:var(--bg);
 }
-
 input:focus{border-color:var(--p);outline:none}
 
 /* BUTTON */
@@ -39,6 +43,12 @@ input:focus{border-color:var(--p);outline:none}
   width:100%;padding:13px;margin-top:10px;
   background:var(--p);color:#fff;border:none;border-radius:var(--rm);
 }
+.btn-a{background:#f59e0b}
+.btn-s{background:#10b981}
+.btn-g{background:#64748b}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
 /* DASHBOARD */
 .dash{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
@@ -55,9 +65,9 @@ th,td{padding:11px;border-bottom:1px solid var(--bdr)}
 th{background:#f1f5f9}
 
 /* MODAL */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none}
-.modal.on{display:flex}
-.msh{background:#fff;border-radius:16px;padding:20px;width:100%}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:500}
+.modal.on{display:flex;align-items:center;justify-content:center}
+.msh{background:#fff;border-radius:16px;padding:20px;width:95%;max-height:90vh;overflow:auto}
 
 /* LOGIN */
 #loginScreen{
@@ -65,12 +75,10 @@ th{background:#f1f5f9}
   background:linear-gradient(135deg,#4f46e5,#7c3aed);
   display:flex;align-items:center;justify-content:center;
 }
-
 .lbox{
   background:#fff;border-radius:20px;padding:32px;
   width:100%;max-width:340px;text-align:center;
 }
-
 .lbox .ttl{font-size:21px;font-weight:800;color:var(--p)}
 #lid,#lpwd{
   width:100%;padding:13px;margin-bottom:12px;
@@ -88,13 +96,51 @@ th{background:#f1f5f9}
 #syncDot.err{background:#f87171}
 #syncDot.off{background:#94a3b8}
 
+/* FLOAT BUTTON */
+.flt{
+  position:fixed;bottom:16px;right:16px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.flt .btn{width:150px}
+
+/* SCANNER */
+#scan-ov{
+  display:none;position:fixed;inset:0;
+  background:#000;color:#fff;
+  align-items:center;justify-content:center;
+  flex-direction:column;
+}
+#scan-ov.on{display:flex}
+#scan-vid{
+  width:90vw;height:90vw;
+  max-width:320px;max-height:320px;
+  background:#000;border-radius:12px;
+}
+
 /* OVERDUE */
 .ov-item{
   background:#fff;border:1px solid #fca5a5;
   border-radius:10px;padding:12px;margin-bottom:8px;
 }
 
-/* J O BUTTON */
-.jo-btn{
-  padding:10px;border:2px solid;border-radius:10px;
+/* JO BUTTON */
+.jo-row{display:flex;gap:10px;margin-top:10px}
+.jo-row button{
+  flex:1;padding:10px;border-radius:10px;
+  border:2px solid var(--bdr);
+}
+
+/* DROPDOWN */
+#caseDD{
+  position:absolute;background:#fff;border:1px solid var(--bdr);
+  max-height:200px;overflow:auto;display:none;
+}
+.di{padding:10px;border-bottom:1px solid var(--bdr)}
+.di:hover{background:#ede9fe}
+
+/* ANIMATION */
+@keyframes pulse{
+  0%{opacity:1}
+  50%{opacity:.5}
+  100%{opacity:1}
 }
